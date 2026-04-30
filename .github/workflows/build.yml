@@ -1,0 +1,40 @@
+name: Build Tweak
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Theos
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential curl perl git libssl-dev libfl-dev
+        git clone --recursive https://github.com/theos/theos.git $HOME/theos
+        echo "THEOS=$HOME/theos" >> $GITHUB_ENV
+
+    - name: Set up SDK
+      run: |
+        curl -LO https://github.com/theos/sdks/archive/master.tar.gz
+        tar -xf master.tar.gz
+        mv sdks-master/*.sdk $HOME/theos/sdks
+        rm -rf sdks-master master.tar.gz
+
+    - name: Build Tweak
+      run: |
+        export THEOS=$HOME/theos
+        make package FINALPACKAGE=1
+      
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: MLBBESP-Package
+        path: packages/*.deb

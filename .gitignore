@@ -1,0 +1,7 @@
+.theos/
+obj/
+packages/
+*.deb
+dump.cs
+offsets.txt
+.DS_Store

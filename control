@@ -1,0 +1,9 @@
+Package: com.edgy.mlbbesp
+Name: MLBBESP
+Depends: mobilesubstrate
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: MLBB ESP Tweak for Jailed/Non-Jailed
+Maintainer: CycloneP2
+Author: CycloneP2
+Section: Tweaks
