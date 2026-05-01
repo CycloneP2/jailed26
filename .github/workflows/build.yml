@@ -101,7 +101,7 @@ jobs:
 
           export THEOS="$HOME/theos"
           export ARCHS="arm64"
-          export TARGET="iphone:clang:latest:26.0"
+          export TARGET="iphone:clang:latest:18.0"
 
           make clean
           make package

@@ -1,5 +1,5 @@
 export ARCHS = arm64
-export TARGET = iphone:clang:latest:15.0
+export TARGET = iphone:clang:latest:18.0
 
 INSTALL_TARGET_PROCESSES = MobileMLBB
 
